@@ -8,7 +8,13 @@ type IProps = {
   handleKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
 }
 
-const SearchBar: React.FC<IProps> = ({searchTerm, handleChange, handleKeyDown, placeholder = "Search by name"}: IProps) => {
+const SearchBar: React.FC<IProps> = ({
+  searchTerm,
+  handleChange,
+  handleKeyDown,
+  placeholder = "Search by name"
+}: IProps) => {
+
   const classes = useStyles();
 
   return (

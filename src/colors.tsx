@@ -7,6 +7,11 @@ const colors = {
     info: '#17a2b8',
     light: '#f8f9fa',
     dark: '#343a40',
+    userDetails: {
+        label: '#333',
+        value: '#555',
+    },
+    white: '#fff',
     table: {
         border: '#ddd',
         body: '#f1f1f1',

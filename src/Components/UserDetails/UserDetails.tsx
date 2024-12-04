@@ -48,4 +48,4 @@ const UserDetails: React.FC<IProps> = ({ user }: IProps) => {
   )
 }
 
-export default UserDetails;
+export default React.memo(UserDetails);
