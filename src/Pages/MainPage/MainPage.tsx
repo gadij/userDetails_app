@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';  
 import UsersTable from '../../Components/UsersTable/UsersTable';
 import StyledButton from '../../Components/SearchButton/SearchButton';
-import API from '../../APIActions/api';
+import SearchBar from '../../Components/SearchBar/SearchBar';
+import API from '../../API/api';
 import { User } from '../../types';  
 import useStyles from './MainPage.styles';
-import SearchBar from '../../Components/SearchBar/SearchBar';
   
 type IProps = {
   searchButtonLabel?: string
@@ -24,7 +24,7 @@ const MainPage: React.FC = ({ searchButtonLabel = 'Search', pageTitle = 'User Li
         const users = await API.fetchUsers();  
         setUsers(users);  
       } catch (error) {  
-        console.error('Error with loading users:', error);  
+        // API class already logs the error, so no need to log it here
       }  
     };  
     loadUsers();  
@@ -35,9 +35,15 @@ const MainPage: React.FC = ({ searchButtonLabel = 'Search', pageTitle = 'User Li
       const users = await API.searchUsers(searchTerm);  
       setUsers(users);  
     } catch (error) {  
-      console.error(`Error with searching for users with search: ${searchTerm}`, error);  
+      // API class already logs the error, so no need to log it here 
     }  
   }; 
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {  
+    if (event.key === 'Enter') {  
+      handleSearch();  
+    }  
+  };  
   
   const handleUserClick = (id: number) => {  
     navigate(`/users/${id}`);  
@@ -47,7 +53,7 @@ const MainPage: React.FC = ({ searchButtonLabel = 'Search', pageTitle = 'User Li
     <div className={classes.mainPage} data-testid="main-page">  
       <h1 className={classes.mainPageTitle}>{pageTitle}</h1>  
       <div className={classes.mainPageActionContainer}>
-        <SearchBar searchTerm={searchTerm} handleChange={setSearchTerm} />
+        <SearchBar searchTerm={searchTerm} handleChange={setSearchTerm} handleKeyDown={handleKeyDown} />
         <StyledButton handleClick={handleSearch}>{searchButtonLabel}</StyledButton>  
       </div>
       <UsersTable users={users} onUserClick={handleUserClick} />

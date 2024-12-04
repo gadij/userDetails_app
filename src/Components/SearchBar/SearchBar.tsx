@@ -5,16 +5,19 @@ type IProps = {
   searchTerm: string
   handleChange: (searchTerm: string) => void
   placeholder?: string
+  handleKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
 }
 
-const SearchBar: React.FC<IProps> = ({searchTerm, handleChange, placeholder = "Search by name"}: IProps) => {
+const SearchBar: React.FC<IProps> = ({searchTerm, handleChange, handleKeyDown, placeholder = "Search by name"}: IProps) => {
   const classes = useStyles();
+
   return (
     <input
       className={classes.mainPageInput}
       type="text"  
       value={searchTerm}  
       onChange={(e) => handleChange(e.target.value)}  
+      onKeyDown={handleKeyDown}  
       placeholder={placeholder}
     />  
   )

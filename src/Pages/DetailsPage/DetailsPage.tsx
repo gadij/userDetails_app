@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from 'react';  
 import { useParams, useNavigate } from 'react-router-dom';  
+import Breadcrumbs from '@mui/material/Breadcrumbs';  
+import Link from '@mui/material/Link';  
+import Typography from '@mui/material/Typography';
 import UserDetail from '../../Components/UserDetails/UserDetails';
-import API from '../../APIActions/api';
+import API from '../../API/api';
 import { User } from '../../types';
-  
-const DetailsPage: React.FC = () => {  
+import useStyles from './DetailsPage.styles';
+
+type IProps = {
+  breadcrumbLabel?: string
+  pageTitle?: string
+}
+
+const DetailsPage: React.FC<IProps> = (
+  {
+    breadcrumbLabel = 'Back To Main Page',
+    pageTitle = 'User Details'
+  }: IProps) => {  
   const { id } = useParams();  
   const [user, setUser] = useState<null | User>(null);  
   const navigate = useNavigate(); 
-  
+  const classes = useStyles();
+
   useEffect(() => {  
     const userDetails = async () => {
       try {
@@ -24,9 +38,18 @@ const DetailsPage: React.FC = () => {
   if (!user) return <div>Loading...</div>;  
   
   return (  
-    <div>  
-      <button onClick={() => navigate(-1)}>Back</button> 
-      <h1>User Details</h1>  
+    <div className={classes.detailsPageContainer}>  
+      <Breadcrumbs aria-label="breadcrumb">  
+        <Link  
+          underline="hover"  
+          color="inherit"  
+          onClick={() => navigate('/')}  
+          style={{ cursor: 'pointer' }}  
+        >  
+          {breadcrumbLabel}
+        </Link>  
+        <Typography color="textPrimary">{pageTitle}</Typography>  
+      </Breadcrumbs>  
       <UserDetail user={user} />
     </div>  
   );  

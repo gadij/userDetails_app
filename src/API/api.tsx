@@ -13,12 +13,13 @@ class API {
     }  
   }  
   
-  static async searchUsers(name: string): Promise<User[]> {  
+  static async searchUsers(searchTerm: string): Promise<User[]> {  
+    console.log('searchTerm:', searchTerm);
     try {  
-      const response = await axios.post<User[]>('/users/search', { name });  
+      const response = await axios.post<User[]>('/users/search', { filter: { name: searchTerm } });  
       return response.data;  
     } catch (error) {  
-      console.error('Error searching users:', error);  
+      console.error(`Error with searching for users with search term: ${searchTerm}`, error);  
       throw error;  
     }  
   }  
@@ -28,7 +29,7 @@ class API {
       const response = await axios.get<User>(`/users/${id}`);  
       return response.data;  
     } catch (error) {  
-      console.error('Error fetching user details:', error);  
+      console.error(`Error fetching user details with id: ${id}`, error);  
       throw error;  
     }  
   }  
