@@ -1,12 +1,10 @@
 import React from 'react';  
 import Button from '@mui/material/Button';  
+import { SearchButtonProps } from '../../types';
 import useStyles from './SearchButton.styles';
 
-type IProps = {
-  children: string | JSX.Element
-  handleClick: () => void
-}
-const StyledButton: React.FC<IProps> = ({ children, handleClick }: IProps) => {  
+
+const StyledButton: React.FC<SearchButtonProps> = ({ children, handleClick }: SearchButtonProps) => {  
   const classes = useStyles();
   return (  
     <Button  

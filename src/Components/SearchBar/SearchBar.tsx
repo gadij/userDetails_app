@@ -1,19 +1,14 @@
 import React from 'react'
+import { SearchBarProps } from '../../types';
 import useStyles from './SearchBar.styles';
 
-type IProps = {
-  searchTerm: string
-  handleChange: (searchTerm: string) => void
-  placeholder?: string
-  handleKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
-}
 
-const SearchBar: React.FC<IProps> = ({
+const SearchBar: React.FC<SearchBarProps> = ({
   searchTerm,
   handleChange,
   handleKeyDown,
   placeholder = "Search by name"
-}: IProps) => {
+}: SearchBarProps) => {
 
   const classes = useStyles();
 

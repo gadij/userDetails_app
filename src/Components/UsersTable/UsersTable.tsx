@@ -1,5 +1,5 @@
 import React from 'react';  
-import { User } from '../../types';  
+import { UserTableProps } from '../../types';  
 import useStyles from './UsersTable.styles';  
 import Table from '@mui/material/Table';  
 import TableBody from '@mui/material/TableBody';  
@@ -9,12 +9,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';  
 import Paper from '@mui/material/Paper';  
   
-type IProps = {  
-  users: User[];  
-  onUserClick: (id: number) => void;  
-};  
   
-const UsersTable: React.FC<IProps> = ({ users, onUserClick }: IProps) => {  
+const UsersTable: React.FC<UserTableProps> = ({ users, onUserClick }: UserTableProps) => {  
   const classes = useStyles();  
   
   return (  

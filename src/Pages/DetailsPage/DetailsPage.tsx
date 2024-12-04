@@ -5,19 +5,14 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import UserDetail from '../../Components/UserDetails/UserDetails';
 import API from '../../API/api';
-import { User } from '../../types';
+import { User, DetailsPageProps } from '../../types';
 import useStyles from './DetailsPage.styles';
 
-type IProps = {
-  breadcrumbLabel?: string
-  pageTitle?: string
-}
-
-const DetailsPage: React.FC<IProps> = (
+const DetailsPage: React.FC<DetailsPageProps> = (
   {
     breadcrumbLabel = 'Back To Main Page',
     pageTitle = 'User Details'
-  }: IProps) => {  
+  }: DetailsPageProps) => {  
   const { id } = useParams();  
   const [user, setUser] = useState<null | User>(null);  
   const navigate = useNavigate(); 

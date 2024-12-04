@@ -4,15 +4,10 @@ import UsersTable from '../../Components/UsersTable/UsersTable';
 import StyledButton from '../../Components/SearchButton/SearchButton';
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import API from '../../API/api';
-import { User } from '../../types';  
+import { User, MainPageProps } from '../../types';  
 import useStyles from './MainPage.styles';
-  
-type IProps = {
-  searchButtonLabel?: string
-  pageTitle?: string
-}
 
-const MainPage: React.FC = ({ searchButtonLabel = 'Search', pageTitle = 'User List' }: IProps) => {  
+const MainPage: React.FC = ({ searchButtonLabel = 'Search', pageTitle = 'User List' }: MainPageProps) => {  
   const classes = useStyles();
   const [users, setUsers] = useState<User[]>([]);  
   const [searchTerm, setSearchTerm] = useState<string>('');  
