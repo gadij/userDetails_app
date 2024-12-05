@@ -16,6 +16,9 @@ const colors = {
         border: '#ddd',
         body: '#f1f1f1',
         head: '#f5f5f5',
+    },
+    card: {
+        background: '#f5f5f5',
     }
 }
 export default colors

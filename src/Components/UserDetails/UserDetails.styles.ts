@@ -11,11 +11,20 @@ const useStyles = makeStyles({
   userDetailContent: {  
     gap: '10px 20px',  
     alignItems: 'center',  
-    backgroundColor: `${colors.white}`,  
+    backgroundColor: `${colors.card.background}`,  
     padding: '30px 20px',  
     borderRadius: '8px',  
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',  
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',  
     width: '40%',
+    '& p': {
+      margin: '0',
+      display: 'flex',
+      justifyContent: 'space-between',
+      padding: '10px 0',
+      '&:not(:last-child)': {
+        borderBottom: '1px dashed rgba(0, 0, 0, 0.1)',
+      },
+    }
   },  
   label: {  
     fontWeight: 'bold',  
