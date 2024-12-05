@@ -1,6 +1,4 @@
 import React from 'react';  
-import { UserTableProps } from '../../types';  
-import useStyles from './UsersTable.styles';  
 import Table from '@mui/material/Table';  
 import TableBody from '@mui/material/TableBody';  
 import TableCell from '@mui/material/TableCell';  
@@ -8,6 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';  
 import TableRow from '@mui/material/TableRow';  
 import Paper from '@mui/material/Paper';  
+import { UserTableProps } from '../../types';  
+import useStyles from './UsersTable.styles';  
   
   
 const UsersTable: React.FC<UserTableProps> = ({ users, onUserClick }: UserTableProps) => {  
@@ -15,7 +15,7 @@ const UsersTable: React.FC<UserTableProps> = ({ users, onUserClick }: UserTableP
   
   return (  
     <TableContainer component={Paper} className={classes.tableContainer}>  
-      <Table className={classes.table} aria-label="simple table">  
+      <Table className={classes.table}>  
         <TableHead className={classes.tableHead}>  
           <TableRow>  
             <TableCell className={classes.tableHeader}>ID</TableCell>  

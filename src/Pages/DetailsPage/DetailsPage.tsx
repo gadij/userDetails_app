@@ -34,7 +34,7 @@ const DetailsPage: React.FC<DetailsPageProps> = (
   
   return (  
     <div className={classes.detailsPageContainer}>  
-      <Breadcrumbs aria-label="breadcrumb">  
+      <Breadcrumbs>  
         <Link  
           underline="hover"  
           color="inherit"  
